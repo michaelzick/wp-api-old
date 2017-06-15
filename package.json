@@ -21,7 +21,9 @@
     "webpack-dev-server": "^1.16.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "webpack-dev-server -p",
+    "dev": "webpack-dev-server -w"
   },
   "author": "",
   "license": "ISC"

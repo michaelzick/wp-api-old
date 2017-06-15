@@ -20,7 +20,8 @@ module.exports = {
     extensions: ['', '.js'] // Extensions that Webpack is going to expect
   },
   module: {
-    // Loaders allow you to preprocess files as you require() or “load” them. Loaders are kind of like “tasks” in other build tools, and provide a powerful way to handle frontend build steps.
+    // Loaders allow you to preprocess files as you require() or “load” them. Loaders are kind of like “tasks” in other build tools,
+    // and provide a powerful way to handle frontend build steps.
     loaders: [
       {
         test: /\.jsx?$/, // Here we're going to use JS for react components but including JSX in case this extension is prefered
@@ -31,6 +32,11 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(), // Hot reloading
-    new webpack.NoErrorsPlugin() // Webpack will let you know if there are any errors
+    new webpack.NoErrorsPlugin(), // Webpack will let you know if there are any errors
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
   ]
 };
