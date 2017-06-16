@@ -12,7 +12,8 @@ class DataStore {
 
     this.exportPublicMethods({
       getAll: 		this.getAll,
-      getAllPages: 	this.getAllPages,
+      getAllPages:  this.getAllPages,
+      getAllPosts: 	this.getAllPosts,
       getPageBySlug: 	this.getPageBySlug
     });
   }
