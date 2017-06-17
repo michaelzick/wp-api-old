@@ -8,17 +8,20 @@ class Nav extends React.Component {
   render() {
     let allPages = DataStore.getAllPages();
     let works = DataStore.getAllWorks();
+    let contact = DataStore.getAllWorks();
     allPages = _.sortBy(allPages, [function(page) { return page.menu_order; }]);
     console.log(works);
 
     return (
       <header>
-        {allPages.map((page) => {
-          // return <Link key={page.id} to={`/${page.slug}`} style={{marginRight: '10px'}}>{page.title.rendered}</Link>
+        {works.items[0].children.map((work) => {
+          return <Link key={work.id} to={`/${work.url}`} style={{marginRight: '10px'}}>
+                   {work.object_slug}
+                 </Link>
         })}
-        {works.items[0].children.map((menu) => {
-          return <Link key={menu.id} to={`/${menu.url}`} style={{marginRight: '10px'}}>{menu.object_slug}</Link>
-        })}
+        <Link key={works.items[1].id} to={`/${works.items[1].url}`} style={{marginRight: '10px'}}>
+          {works.items[1].object_slug}
+        </Link>
       </header>
     );
   }

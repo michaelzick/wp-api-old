@@ -15,22 +15,6 @@ import {
 import DataActions  from './actions/DataActions.js';
 
 class AppInitializer {
-  // buildRoutes(data) {
-  //   return data.pages.map((page, i) => {
-  //     const component = views[page.slug];
-  //     return (
-  //       <Route
-  //         getComponent={(nextState, cb) => {
-  //           require.ensure([], (require) => {
-  //             cb(null, require(component).default);
-  //           });
-  //         }}
-  //         key={ page.id }
-  //         path={`/${page.slug}`}
-  //       />
-  //     );
-  //   });
-  // }
 
   buildRoutes(data) {
     return data.works.items[0].children.map((work, i) => {
