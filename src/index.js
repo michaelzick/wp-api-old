@@ -33,8 +33,8 @@ class AppInitializer {
   // }
 
   buildRoutes(data) {
-    return data.menus.items[0].children.map((menu, i) => {
-      const component = views[menu.object_slug];
+    return data.works.items[0].children.map((work, i) => {
+      const component = views[work.object_slug];
       return (
         <Route
           getComponent={(nextState, cb) => {
@@ -42,15 +42,15 @@ class AppInitializer {
               cb(null, require(component).default);
             });
           }}
-          key={ menu.id }
-          path={`/${menu.object_slug}`}
+          key={ work.id }
+          path={`/${work.object_slug}`}
         />
       );
     });
   }
 
   run() {
-    DataActions.getMenus((response)=>{
+    DataActions.getWorks((response)=>{
       render(
         <Router history={browserHistory}>
           <Route path="/" component={ App } >

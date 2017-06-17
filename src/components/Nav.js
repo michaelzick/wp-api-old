@@ -7,16 +7,16 @@ import DataStore from './../stores/DataStores.js';
 class Nav extends React.Component {
   render() {
     let allPages = DataStore.getAllPages();
-    let allMenus = DataStore.getAllMenus();
+    let works = DataStore.getAllWorks();
     allPages = _.sortBy(allPages, [function(page) { return page.menu_order; }]);
-    console.log(allMenus);
+    console.log(works);
 
     return (
       <header>
         {allPages.map((page) => {
           // return <Link key={page.id} to={`/${page.slug}`} style={{marginRight: '10px'}}>{page.title.rendered}</Link>
         })}
-        {allMenus.items[0].children.map((menu) => {
+        {works.items[0].children.map((menu) => {
           return <Link key={menu.id} to={`/${menu.url}`} style={{marginRight: '10px'}}>{menu.object_slug}</Link>
         })}
       </header>
