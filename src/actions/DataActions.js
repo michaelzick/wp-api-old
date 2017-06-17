@@ -9,6 +9,7 @@ class DataActions {
 
     this.pagesEndPoint = `${appUrl}/wp-json/wp/v2/pages`; // Endpoint for getting Wordpress Pages
     this.postsEndPoint = `${appUrl}/wp-json/wp/v2/posts`; // Endpoint for getting Wordpress Posts
+    this.menusEndPoint = `${appUrl}/wp-json/wp-api-menus/v2/menus`; // Endpoint for getting Wordpress Menus
   }
 
   // Method for getting data from the provided end point url
@@ -19,6 +20,16 @@ class DataActions {
       }).catch((error) => {
         reject(error);
       });
+    });
+  }
+
+  // Method for getting Menus data
+  getMenus(cb){
+    this.api(this.menusEndPoint).then((response)=>{
+      console.log(response);
+      const menus = response;
+      this.getSuccess({menus}); // Pass returned data to the store
+      cb({menus}); // This callback will be used for dynamic rout building
     });
   }
 

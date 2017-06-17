@@ -12,9 +12,10 @@ class DataStore {
 
     this.exportPublicMethods({
       getAll: 		this.getAll,
+      getAllMenus: 	this.getAllMenus,
       getAllPages:  this.getAllPages,
-      getAllPosts: 	this.getAllPosts,
-      getPageBySlug: 	this.getPageBySlug
+      getAllPosts:  this.getAllPosts,
+      getPageBySlug:  this.getPageBySlug,
     });
   }
 
@@ -26,6 +27,11 @@ class DataStore {
   // Returns all pages and posts
   getAll() {
     return this.getState().data;
+  }
+
+  // Returns all Menus
+  getAllMenus() {
+    return this.getState().data.menus;
   }
 
   // Returns all Pages
