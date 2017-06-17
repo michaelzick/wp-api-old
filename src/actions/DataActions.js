@@ -27,9 +27,7 @@ class DataActions {
   getMenus(cb){
     this.api(this.menusEndPoint).then((response)=>{
       console.log(response);
-      const menus = response;
-      this.getSuccess({menus}); // Pass returned data to the store
-      cb({menus}); // This callback will be used for dynamic rout building
+      this.getPosts(response, cb);
     });
   }
 

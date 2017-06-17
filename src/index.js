@@ -32,8 +32,24 @@ class AppInitializer {
     });
   }
 
+  // run() {
+  //   DataActions.getPages((response)=>{
+  //     render(
+  //       <Router history={browserHistory}>
+  //         <Route path="/" component={ App } >
+  //           <IndexRoute component={ Home } />
+
+  //           {this.buildRoutes(response)}
+  //         </Route>
+  //         <Redirect from="*" to="/" />
+  //       </Router>
+
+  //       , document.getElementById('app')
+  //     );
+  //   });
+
   run() {
-    DataActions.getPages((response)=>{
+    DataActions.getMenus((response)=>{
       render(
         <Router history={browserHistory}>
           <Route path="/" component={ App } >
