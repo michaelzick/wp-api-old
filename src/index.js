@@ -15,9 +15,26 @@ import {
 import DataActions  from './actions/DataActions.js';
 
 class AppInitializer {
+  // buildRoutes(data) {
+  //   return data.pages.map((page, i) => {
+  //     const component = views[page.slug];
+  //     return (
+  //       <Route
+  //         getComponent={(nextState, cb) => {
+  //           require.ensure([], (require) => {
+  //             cb(null, require(component).default);
+  //           });
+  //         }}
+  //         key={ page.id }
+  //         path={`/${page.slug}`}
+  //       />
+  //     );
+  //   });
+  // }
+
   buildRoutes(data) {
-    return data.pages.map((page, i) => {
-      const component = views[page.slug];
+    return data.menus.items[0].children.map((menu, i) => {
+      const component = views[menu.object_slug];
       return (
         <Route
           getComponent={(nextState, cb) => {
@@ -25,28 +42,12 @@ class AppInitializer {
               cb(null, require(component).default);
             });
           }}
-          key={ page.id }
-          path={`/${page.slug}`}
+          key={ menu.id }
+          path={`/${menu.object_slug}`}
         />
       );
     });
   }
-
-  // run() {
-  //   DataActions.getPages((response)=>{
-  //     render(
-  //       <Router history={browserHistory}>
-  //         <Route path="/" component={ App } >
-  //           <IndexRoute component={ Home } />
-
-  //           {this.buildRoutes(response)}
-  //         </Route>
-  //         <Redirect from="*" to="/" />
-  //       </Router>
-
-  //       , document.getElementById('app')
-  //     );
-  //   });
 
   run() {
     DataActions.getMenus((response)=>{
